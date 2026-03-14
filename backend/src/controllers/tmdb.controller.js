@@ -14,7 +14,7 @@ export async function fetchMoviesTvController(req, res) {
     // https://api.themoviedb.org/3/movie/popular?api_key=
     try {
 
-        const { type, changes = "popular" } = req.body;
+        const { type, changes = "popular" } = req.params;
 
         if (type !== "movie" && type !== "tv") {
             return res.status(400).json({

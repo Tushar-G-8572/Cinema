@@ -1,0 +1,49 @@
+.banner{
+  position: relative;
+  height: 70vh;
+  color: white;
+
+  img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .bannerContent{
+    position: absolute;
+    bottom: 60px;
+    left: 50px;
+    max-width: 500px;
+
+    h1{
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    p{
+      opacity: .8;
+    }
+
+    .buttons{
+      margin-top: 20px;
+
+      button{
+        padding: 10px 20px;
+        margin-right: 10px;
+        border: none;
+        cursor: pointer;
+        font-weight: bold;
+      }
+
+      .play{
+        background: white;
+        color: black;
+      }
+
+      .info{
+        background: rgba(255,255,255,.3);
+        color: white;
+      }
+    }
+  }
+}
