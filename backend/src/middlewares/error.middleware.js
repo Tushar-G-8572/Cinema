@@ -1,10 +1,15 @@
-export  function errorHandler (err,req,res,next) {
-    const responce = {
-        message:err.message
-    }
-    if(process.env.NODE_ENVIOURMENT === 'development'){
-        responce.stack = err.stack
+export function errorHandler(err, req, res, next) {
+
+    const statusCode = err.status || 500;
+
+    const response = {
+        success: false,
+        message: err.message || "Internal Server Error"
+    };
+
+    if (process.env.NODE_ENV === "development") {
+        response.stack = err.stack;
     }
 
-    res.status(err.status).json(responce);
+    res.status(statusCode).json(response);
 }

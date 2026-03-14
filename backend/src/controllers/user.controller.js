@@ -1,6 +1,15 @@
+import axios from 'axios';
 import favoriteModel from '../models/favorite.model.js'
 import movieModel from '../models/movie.model.js';
 import watchHistoryModel from '../models/watchHistory.model.js'
+// import { searchMovieById } from './tmdb.controller.js';
+
+const api = axios.create({
+    baseURL: "https://api.themoviedb.org/3",
+    params: {
+        api_key: process.env.TMDB_API_KEY
+    }
+});
 
 export async function handleFavoriteController(req,res) {
 
@@ -29,6 +38,13 @@ export async function handleFavoriteController(req,res) {
                 message:"Movie already in favorites"
             });
         }
+
+        // const movieData = searchMovieById(id);
+        // https://api.themoviedb.org/3/movie/19995?append_to_response=credits,videos,recommendations
+
+        const movieData = await api.get(`/movie/${movieId}`);
+
+        console.log("movie Data :",movieData.data);
 
         const favorite = await favoriteModel.create({
             user:id,
